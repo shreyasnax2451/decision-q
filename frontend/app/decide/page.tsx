@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { DecisionState, Step, STEPS } from '@/types/decision';
 import { decisionsApi, ApiError } from '@/lib/api';
@@ -25,7 +25,7 @@ const initialState: DecisionState = {
 
 const STEP_LABELS = ['Hook', 'Options', 'Values', 'Score', 'Reveal', 'Insights'];
 
-const variants = {
+const variants: Variants = {
     enter: (dir: number) => ({ x: dir > 0 ? 80 : -80, opacity: 0, scale: 0.97 }),
     center: { x: 0, opacity: 1, scale: 1, transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] } },
     exit: (dir: number) => ({
