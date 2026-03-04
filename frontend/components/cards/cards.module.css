@@ -1,0 +1,795 @@
+/* ─── Shared card styles ─────────────────────────── */
+
+.cardDesc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: -4px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.charCount {
+    font-size: 0.72rem;
+    color: var(--grey-mid);
+    text-align: right;
+    font-weight: 500;
+}
+
+.hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--grey-mid);
+    font-weight: 400;
+}
+
+/* ─── Options ─────────────────────────────────────── */
+.optionsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 40px;
+}
+
+.optionChip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--grey-soft);
+    border: 1.5px solid var(--grey-border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    transition: var(--transition);
+}
+
+.optionChip:hover {
+    border-color: var(--sage-light);
+    background: rgba(125, 168, 123, 0.05);
+}
+
+.optionIndex {
+    width: 26px;
+    height: 26px;
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.optionLabel {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.removeBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--grey-mid);
+    font-size: 1.3rem;
+    line-height: 1;
+    padding: 0 4px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.removeBtn:hover {
+    color: #e05555;
+}
+
+.inputRow {
+    display: flex;
+    gap: 10px;
+}
+
+.addBtn {
+    width: 52px;
+    height: 52px;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addBtn:hover {
+    background: var(--navy-light);
+    transform: scale(1.05);
+}
+
+.addBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btnRow {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* ─── Criteria ────────────────────────────────────── */
+.criteriaList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.criterionItem {
+    background: var(--grey-soft);
+    border: 1.5px solid var(--grey-border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: var(--transition);
+}
+
+.criterionItem:hover {
+    border-color: var(--sage-light);
+}
+
+.criterionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.criterionLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.criterionWeight {
+    font-size: 0.75rem;
+    color: var(--grey-mid);
+    font-weight: 500;
+}
+
+/* ─── Score Card ──────────────────────────────────── */
+
+/* Option tabs */
+.scoreOptionTabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.scoreOptionTab {
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1.5px solid var(--grey-border);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: 'Inter', sans-serif;
+}
+
+.scoreOptionTab:hover {
+    border-color: var(--sage-light);
+    color: var(--sage-light);
+}
+
+.scoreOptionTabActive {
+    background: var(--navy);
+    border-color: var(--sage);
+    color: var(--white);
+    font-weight: 700;
+}
+
+/* Progress bar */
+.scoreProgress {
+    height: 4px;
+    background: var(--grey-border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.scoreProgressFill {
+    height: 100%;
+    background: var(--sage);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+/* Criteria scoring list */
+.scoreCriteriaList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+}
+
+.scoreCriterionRow {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--grey-soft);
+    border: 1.5px solid var(--grey-border);
+    border-radius: 14px;
+    padding: 14px 18px;
+    transition: var(--transition);
+}
+
+.scoreCriterionRow:hover {
+    border-color: var(--sage-light);
+}
+
+.scoreCriterionHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.scoreCriterionLabel {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.scoreDotLabel {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--sage-light);
+    letter-spacing: 0.04em;
+}
+
+.scoreVal {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--sage);
+    min-width: 18px;
+    text-align: right;
+}
+
+/* Score dots (1-5) */
+.scoreDots {
+    display: flex;
+    gap: 10px;
+}
+
+.scoreDot {
+    flex: 1;
+    height: 10px;
+    border-radius: 5px;
+    border: 2px solid var(--grey-border);
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 0;
+}
+
+.scoreDot:hover {
+    border-color: var(--sage-light);
+    background: rgba(125, 168, 123, 0.2);
+    transform: scaleY(1.4);
+}
+
+.scoreDotFilled {
+    background: var(--sage);
+    border-color: var(--sage);
+}
+
+.scoreDotFilled:hover {
+    background: var(--sage-dark, #5b9e5a);
+    border-color: var(--sage-dark, #5b9e5a);
+}
+
+/* Legacy dot-based progress (kept for compatibility) */
+.optionProgress {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: -4px;
+}
+
+.optionDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--grey-border);
+    transition: var(--transition);
+}
+
+.optionDotActive {
+    background: var(--sage);
+    transform: scale(1.5);
+    box-shadow: 0 0 0 3px rgba(125, 168, 123, 0.2);
+}
+
+.optionDotDone {
+    background: var(--sage-light);
+}
+
+.scoringOption {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 14px 18px;
+    background: var(--navy);
+    border-radius: 12px;
+}
+
+.scoringLabel {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.scoringOptionName {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+/* ─── Reveal Card ─────────────────────────────────── */
+.revealCard {
+    background: var(--navy);
+    border-radius: var(--radius-card);
+    box-shadow: 0 24px 80px rgba(15, 30, 54, 0.3);
+    padding: 44px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.revealGlow {
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(125, 168, 123, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.revealStep {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    background: rgba(125, 168, 123, 0.1);
+    border-radius: 6px;
+    padding: 3px 10px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.revealLoading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 40px 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+}
+
+.loadingSpinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(125, 168, 123, 0.2);
+    border-top-color: var(--sage);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.revealContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.winnerBadge {
+    display: inline-block;
+    width: fit-content;
+    background: var(--sage);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 4px 14px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.winnerName {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.winnerScoreDisplay {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.winnerScoreNum {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--sage);
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.winnerScoreOf {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 500;
+}
+
+.resultsChart {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.resultRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.resultLabel {
+    width: 130px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.resultBarWrap {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.resultBar {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.resultBarWinner {
+    background: var(--sage);
+}
+
+.resultScore {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    width: 32px;
+    text-align: right;
+}
+
+.revealNextBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--sage);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-btn);
+    padding: 14px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    flex: 1;
+}
+
+.revealNextBtn:hover {
+    background: var(--sage-dark);
+    transform: translateY(-2px);
+}
+
+.revealNextBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ─── Insights Card ───────────────────────────────── */
+.insightsCard {
+    background: var(--navy);
+    border-radius: var(--radius-card);
+    box-shadow: 0 24px 80px rgba(15, 30, 54, 0.3);
+    padding: 40px 44px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.insightsHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.insightsTitle {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.03em;
+}
+
+.insightsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.insightPanel {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.insightPanelLabel {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Bias */
+.biasDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.biasLabel {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.biasLabel strong {
+    color: var(--white);
+}
+
+.biasPill {
+    display: inline-block;
+    background: rgba(125, 168, 123, 0.15);
+    border: 1px solid rgba(125, 168, 123, 0.3);
+    color: var(--sage-light);
+    border-radius: 100px;
+    padding: 2px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.biasBar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.biasFill {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.biasFillInner {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: var(--sage);
+    border-radius: 3px;
+}
+
+/* Scores table */
+.scoresTable {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.scoreRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.scoreRank {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.scoreRowWinner .scoreRank {
+    background: var(--sage);
+    color: var(--white);
+}
+
+.scoreName {
+    width: 120px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.scoreRowWinner .scoreName {
+    color: var(--white);
+    font-weight: 700;
+}
+
+.scoreMiniBar {
+    flex: 1;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.scoreMiniBarFill {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.scoreRowWinner .scoreMiniBarFill {
+    background: var(--sage);
+}
+
+.scoreNum {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    width: 36px;
+    text-align: right;
+}
+
+.scoreRowWinner .scoreNum {
+    color: var(--sage-light);
+}
+
+/* Crowd */
+.crowdStat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.crowdPct {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--sage);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.crowdText {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+}
+
+.crowdText strong {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Dark theme overrides ─────────────────────────── */
+[data-theme='dark'] .cardDesc {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+[data-theme='dark'] .criterionLabel {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme='dark'] .optionLabel {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme='dark'] .optionChip {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .criterionItem {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .hint {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+[data-theme='dark'] .charCount {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme='dark'] .scoreOptionTab {
+    color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme='dark'] .scoreOptionTabActive {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: #ffffff;
+}
+
+[data-theme='dark'] .scoreCriterionRow {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .scoreCriterionLabel {
+    color: rgba(255, 255, 255, 0.85);
+}

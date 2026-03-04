@@ -1,0 +1,40 @@
+.wrap {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.dotWrap {
+    display: flex;
+    align-items: center;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--grey-border);
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.dotActive {
+    background: var(--sage);
+    transform: scale(1.45);
+    box-shadow: 0 0 0 3px rgba(125, 168, 123, 0.2);
+}
+
+.dotDone {
+    background: var(--sage-light);
+}
+
+.line {
+    width: 24px;
+    height: 2px;
+    background: var(--grey-border);
+    transition: var(--transition);
+}
+
+.lineDone {
+    background: var(--sage-light);
+}

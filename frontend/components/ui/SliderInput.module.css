@@ -1,0 +1,44 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.labelText {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.valueDisplay {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 7px;
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    min-width: 30px;
+    text-align: center;
+}
+
+.scaleHint {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    color: var(--grey-mid);
+}
+
+.hintLabel {
+    font-style: italic;
+    color: var(--sage);
+    font-weight: 500;
+}

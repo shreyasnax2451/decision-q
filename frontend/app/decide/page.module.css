@@ -1,0 +1,119 @@
+.page {
+    min-height: 100vh;
+    background: var(--grey-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.bgGlow {
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(125, 168, 123, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.nav {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 40px;
+    position: relative;
+    z-index: 50;
+}
+
+.logoLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logoMark {
+    width: 34px;
+    height: 34px;
+    background: var(--navy);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.logoText {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+}
+
+.cardArea {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 24px 60px;
+    width: 100%;
+}
+
+.cardWrapper {
+    width: 100%;
+    max-width: 560px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Dark theme overrides ───────────────────────────── */
+[data-theme='dark'] .logoMark {
+    background: var(--sage);
+    color: #ffffff;
+}
+
+[data-theme='dark'] .logoText {
+    color: #ffffff;
+}
+
+/* Limit card */
+.limitCard {
+    background: var(--white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: 48px 44px;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.limitIcon {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.limitTitle {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.limitText {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 360px;
+}

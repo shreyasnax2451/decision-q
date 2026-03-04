@@ -1,0 +1,276 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 60px;
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 40px;
+    position: relative;
+    z-index: 50;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logoLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logoMark {
+    width: 34px;
+    height: 34px;
+    background: var(--navy);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.logoText {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+}
+
+[data-theme='dark'] .logoMark {
+    background: var(--sage);
+    color: #ffffff;
+}
+
+[data-theme='dark'] .logoText {
+    color: #ffffff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+}
+
+.welcomeSection h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+
+.welcomeSection p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.statsRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.statCard {
+    background: var(--white);
+    padding: 24px;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.statCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.statLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--grey-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.statValue {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.mainGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+}
+
+.sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.insightCard {
+    background: var(--white);
+    padding: 32px;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 32px;
+}
+
+.insightGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.insightItem {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.insightHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.progressBar {
+    height: 8px;
+    background: var(--grey-soft);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--sage);
+    border-radius: 4px;
+    transition: width 0.8s ease-out;
+}
+
+.historySection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.decisionItem {
+    background: var(--white);
+    padding: 20px 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(15, 30, 54, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.decisionItem:hover {
+    border-color: var(--sage-light);
+    background: #fcfdfc;
+}
+
+.decisionInfo h4 {
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+
+.decisionMeta {
+    font-size: 0.85rem;
+    color: var(--grey-mid);
+    display: flex;
+    gap: 12px;
+}
+
+.winnerBadge {
+    background: rgba(125, 168, 123, 0.1);
+    color: var(--sage-dark);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.comparisonSection {
+    background: var(--navy);
+    color: var(--white);
+    padding: 32px;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+}
+
+.comparisonSection h3 {
+    color: var(--white);
+    margin-bottom: 16px;
+}
+
+.comparisonText {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.comparisonStat {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--sage-light);
+    margin-bottom: 12px;
+}
+
+.analyticsLocked {
+    background: #f8fafc;
+    border: 2px dashed var(--grey-border);
+    border-radius: var(--radius-card);
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.lockIcon {
+    font-size: 2rem;
+    color: var(--grey-mid);
+}
+
+.lockText {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+@media (max-width: 900px) {
+    .mainGrid {
+        grid-template-columns: 1fr;
+    }
+}

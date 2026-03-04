@@ -1,0 +1,50 @@
+.shell {
+    background: var(--white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: 40px 44px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stepNum {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    background: rgba(125, 168, 123, 0.1);
+    border-radius: 6px;
+    padding: 3px 10px;
+}
+
+.stepLabel {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ── Dark theme overrides ───────────────────────────── */
+[data-theme='dark'] .stepLabel {
+    color: #ffffff;
+}
+
+[data-theme='dark'] .stepNum {
+    background: rgba(125, 168, 123, 0.2);
+    color: var(--sage-light);
+}
