@@ -26,7 +26,7 @@ class Settings(BaseSettings):
 
     # Limits
     MAX_DECISIONS: int = 5
-    OTP_EXPIRE_MINUTES: int = 1
+    OTP_EXPIRE_MINUTES: int = 5
 
     class Config:
         env_file = ".env"

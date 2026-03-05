@@ -38,3 +38,18 @@
 .lineDone {
     background: var(--sage-light);
 }
+
+@media (max-width: 600px) {
+    .line {
+        display: none;
+    }
+
+    .wrap {
+        gap: 8px;
+    }
+
+    .dot {
+        width: 7px;
+        height: 7px;
+    }
+}

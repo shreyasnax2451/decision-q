@@ -61,13 +61,13 @@ export default function Dashboard() {
                 <NavDropdown />
             </nav>
 
-            <main style={{ padding: '0 40px' }}>
+            <main className={styles.mainContent}>
                 <header className={styles.header}>
                     <div className={styles.welcomeSection}>
                         <h1>Welcome, {user?.first_name || 'Decider'}!</h1>
                         <p>Everything is clear when you weight what matters.</p>
                     </div>
-                    <div style={{ display: 'flex', gap: '12px' }}>
+                    <div className={styles.headerBtns}>
                         <Link href="/invite" className="btn-ghost" style={{ borderStyle: 'dashed' }}>
                             Invite a Friend
                         </Link>
@@ -164,7 +164,7 @@ export default function Dashboard() {
                             <div className={styles.analyticsLocked}>
                                 <div className={styles.lockIcon}>🔒</div>
                                 <p className={styles.lockText}>
-                                    Finish {Math.max(0, 5 - decisions.length)} more decisions to unlock trend analytics.
+                                    Coming soon...
                                 </p>
                                 <div style={{ width: '100%', height: '80px', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', marginTop: '8px' }} />
                             </div>

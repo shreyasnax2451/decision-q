@@ -258,3 +258,13 @@
 [data-theme='dark'] .menuItemDanger {
     color: #f08080;
 }
+
+@media (max-width: 600px) {
+    .userName {
+        display: none;
+    }
+
+    .trigger {
+        padding: 6px;
+    }
+}

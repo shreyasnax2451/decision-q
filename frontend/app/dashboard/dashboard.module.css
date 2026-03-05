@@ -58,6 +58,30 @@
     color: #ffffff;
 }
 
+.mainContent {
+    padding: 0 40px;
+}
+
+.headerBtns {
+    display: flex;
+    gap: 12px;
+}
+
+@media (max-width: 600px) {
+    .mainContent {
+        padding: 0 24px;
+    }
+
+    .headerBtns {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .headerBtns a {
+        width: 100%;
+    }
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -272,5 +296,60 @@
 @media (max-width: 900px) {
     .mainGrid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 850px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        margin-bottom: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 20px 24px;
+    }
+
+    /* The .header rule was moved to @media (max-width: 850px) */
+
+    .welcomeSection h1 {
+        font-size: 1.8rem;
+    }
+
+    .statValue {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .statsRow {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .insightGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .insightCard {
+        padding: 24px;
+    }
+
+    .decisionItem {
+        padding: 16px 20px;
+    }
+
+    .decisionInfo h4 {
+        font-size: 1rem;
+    }
+
+    .comparisonSection {
+        padding: 24px;
+    }
+
+    .comparisonStat {
+        font-size: 2rem;
     }
 }

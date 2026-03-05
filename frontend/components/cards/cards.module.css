@@ -793,3 +793,82 @@
 [data-theme='dark'] .scoreCriterionLabel {
     color: rgba(255, 255, 255, 0.85);
 }
+
+/* ─── Responsive ──────────────────────────────────── */
+
+@media (max-width: 600px) {
+    .inputRow {
+        flex-direction: column;
+    }
+
+    .addBtn {
+        width: 100%;
+        height: 52px;
+    }
+
+    .btnRow {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btnRow button,
+    .btnRow a {
+        width: 100%;
+    }
+
+    .revealCard {
+        padding: 32px 24px;
+    }
+
+    .winnerName {
+        font-size: 1.5rem;
+    }
+
+    .winnerScoreNum {
+        font-size: 2.2rem;
+    }
+
+    .insightsCard {
+        padding: 32px 24px;
+    }
+
+    .insightsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .scoreRank {
+        width: 18px;
+        height: 18px;
+        font-size: 0.6rem;
+    }
+
+    .scoreName {
+        width: 80px;
+        font-size: 0.75rem;
+    }
+
+    .scoreNum {
+        width: 28px;
+        font-size: 0.7rem;
+    }
+
+    .resultLabel {
+        width: 90px;
+        font-size: 0.75rem;
+    }
+
+    .criterionHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .scoreOptionTabs {
+        gap: 6px;
+    }
+
+    .scoreOptionTab {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+    }
+}

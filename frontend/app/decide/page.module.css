@@ -117,3 +117,33 @@
     line-height: 1.6;
     max-width: 360px;
 }
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 20px 24px;
+        gap: 12px;
+    }
+
+    .cardArea {
+        padding: 20px 16px 40px;
+    }
+
+    .limitCard {
+        padding: 32px 24px;
+    }
+}
+
+@media (max-width: 500px) {
+    .logoText {
+        display: none;
+    }
+
+    .nav {
+        justify-content: space-between;
+        padding: 16px 20px;
+    }
+
+    .cardArea {
+        padding: 10px 12px 30px;
+    }
+}

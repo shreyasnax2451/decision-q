@@ -101,7 +101,7 @@
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .inputDark {
@@ -269,4 +269,39 @@
 
 .emailHint strong {
     color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 40px 24px;
+        border-radius: 20px;
+    }
+
+    .fieldRow {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .heading {
+        font-size: 1.4rem;
+    }
+
+    .otpDigit {
+        width: 44px;
+        height: 52px;
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .otpWrap {
+        gap: 6px;
+    }
+
+    .otpDigit {
+        width: 38px;
+        height: 48px;
+        font-size: 1.1rem;
+        border-radius: 8px;
+    }
 }
