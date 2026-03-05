@@ -8,16 +8,25 @@ from app.config import settings
 from app.database import get_db
 from app.models.user import User
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+import bcrypt
+
 bearer_scheme = HTTPBearer()
 
+# Note: passlib has a bug when initializing bcrypt with bcrypt 4+ versions.
+# We'll use the bcrypt library directly for stability.
 
 def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
+    # bcrypt handles up to 72 chars. We truncate to avoid ValueError in version 5.0+
+    pw_bytes = password.encode("utf-8")[:72]
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(pw_bytes, salt)
+    return hashed.decode("utf-8")
 
 
 def verify_password(plain: str, hashed: str) -> bool:
-    return pwd_context.verify(plain, hashed)
+    pw_bytes = plain.encode("utf-8")[:72]
+    hashed_bytes = hashed.encode("utf-8")
+    return bcrypt.checkpw(pw_bytes, hashed_bytes)
 
 
 def create_access_token(data: dict) -> str:
