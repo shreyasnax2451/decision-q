@@ -1,5 +1,8 @@
 import smtplib
 import logging
+import resend
+import sendgrid
+from sendgrid.helpers.mail import Mail as SGMail, Email as SGEmail, To as SGTo, Content as SGContent
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from app.config import settings
@@ -8,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 def send_verification_email(to_email: str, code: str) -> None:
-    """Send OTP verification email via SMTP TLS."""
+    """Send OTP verification email via SendGrid, Resend, or SMTP."""
     subject = "Your Decision-Q verification code"
     html_body = f"""
     <!DOCTYPE html>
@@ -69,6 +72,43 @@ def send_verification_email(to_email: str, code: str) -> None:
     </html>
     """
 
+    # --- Choice 1: SendGrid API (Recommended for Gmail users without domain) ---
+    if settings.SENDGRID_API_KEY:
+        try:
+            sg = sendgrid.SendGridAPIClient(api_key=settings.SENDGRID_API_KEY)
+            message = SGMail(
+                from_email=SGEmail(settings.EMAIL_FROM, settings.EMAIL_FROM_NAME),
+                to_emails=SGTo(to_email),
+                subject=subject,
+                html_content=SGContent("text/html", html_body)
+            )
+            sg.send(message)
+            logger.info(f"Email sent via SendGrid API to {to_email}")
+            return
+        except Exception as e:
+            logger.error(f"SendGrid API failed: {e}")
+            if settings.ENVIRONMENT != "development":
+                raise
+
+    # --- Choice 2: Resend API ---
+    if settings.RESEND_API_KEY:
+        try:
+            resend.api_key = settings.RESEND_API_KEY
+            resend.Emails.send({
+                "from": f"{settings.EMAIL_FROM_NAME} <{settings.EMAIL_FROM}>",
+                "to": to_email,
+                "subject": subject,
+                "html": html_body
+            })
+            logger.info(f"Email sent via Resend API to {to_email}")
+            return
+        except Exception as e:
+            logger.error(f"Resend API failed: {e}")
+            if settings.ENVIRONMENT != "development":
+                raise
+
+    # --- Choice 3: SMTP (Fallback or Local) ---
+    logger.warning("No Email API (SendGrid/Resend) configured. Falling back to SMTP.")
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = f"{settings.EMAIL_FROM_NAME} <{settings.EMAIL_FROM}>"
@@ -77,12 +117,10 @@ def send_verification_email(to_email: str, code: str) -> None:
 
     try:
         if settings.SMTP_PORT == 465:
-            # Use SSL for port 465
             with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT) as server:
                 server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
                 server.sendmail(settings.EMAIL_FROM, to_email, msg.as_string())
         else:
-            # Use TLS for port 587 (or others)
             with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT) as server:
                 server.ehlo()
                 server.starttls()
@@ -90,10 +128,9 @@ def send_verification_email(to_email: str, code: str) -> None:
                 server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
                 server.sendmail(settings.EMAIL_FROM, to_email, msg.as_string())
 
-        logger.info(f"Verification email sent to {to_email}")
+        logger.info(f"Email sent via SMTP to {to_email}")
     except Exception as e:
-        logger.error(f"Failed to send email to {to_email}: {e}")
-        # In development, fall back to console log
+        logger.error(f"SMTP failed to {to_email}: {e}")
         if settings.ENVIRONMENT == "development":
             logger.warning(f"[DEV FALLBACK] OTP for {to_email}: {code}")
         else:

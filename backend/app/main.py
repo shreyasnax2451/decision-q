@@ -1,3 +1,10 @@
+import os
+import certifi
+
+# Fix for SSL: CERTIFICATE_VERIFY_FAILED on macOS
+os.environ["SSL_CERT_FILE"] = certifi.where()
+os.environ["REQUESTS_CA_BUNDLE"] = certifi.where()
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings

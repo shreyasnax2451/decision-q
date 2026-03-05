@@ -29,6 +29,8 @@ services:
         sync: false
       - key: FRONTEND_URL
         sync: false # Set this to your Vercel URL later
+      - key: SENDGRID_API_KEY
+        sync: false
 
 databases:
   - name: decision-q-db

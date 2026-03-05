@@ -18,6 +18,7 @@ class Settings(BaseSettings):
     SMTP_PASSWORD: str = ""
     EMAIL_FROM: str = ""
     EMAIL_FROM_NAME: str = "Decision-Q"
+    SENDGRID_API_KEY: str = ""
 
     # App
     ENVIRONMENT: str = "development"
