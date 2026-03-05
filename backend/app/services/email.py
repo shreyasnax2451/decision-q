@@ -72,7 +72,7 @@ def send_verification_email(to_email: str, code: str) -> None:
     """
 
     # --- Choice 1: SendGrid API (Recommended for Gmail users without domain) ---
-    if settings.SENDGRID_API_KEY:
+    if not settings.SENDGRID_API_KEY:
         try:
             sg = sendgrid.SendGridAPIClient(api_key=settings.SENDGRID_API_KEY)
             message = SGMail(
