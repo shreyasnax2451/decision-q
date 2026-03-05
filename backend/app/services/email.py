@@ -1,6 +1,5 @@
 import smtplib
 import logging
-import resend
 import sendgrid
 from sendgrid.helpers.mail import Mail as SGMail, Email as SGEmail, To as SGTo, Content as SGContent
 from email.mime.multipart import MIMEMultipart
