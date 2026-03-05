@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 def send_verification_email(to_email: str, code: str) -> None:
-    """Send OTP verification email via SendGrid, Resend, or SMTP."""
+    """Send OTP verification email via SendGrid, or SMTP."""
     subject = "Your Decision-Q verification code"
     html_body = f"""
     <!DOCTYPE html>
@@ -90,48 +90,32 @@ def send_verification_email(to_email: str, code: str) -> None:
             if settings.ENVIRONMENT != "development":
                 raise
 
-    # --- Choice 2: Resend API ---
-    if settings.RESEND_API_KEY:
+    else:
+        # --- Choice 2: SMTP (Fallback or Local) ---
+        logger.warning("No Email API (SendGrid) configured. Falling back to SMTP.")
+        msg = MIMEMultipart("alternative")
+        msg["Subject"] = subject
+        msg["From"] = f"{settings.EMAIL_FROM_NAME} <{settings.EMAIL_FROM}>"
+        msg["To"] = to_email
+        msg.attach(MIMEText(html_body, "html"))
+
         try:
-            resend.api_key = settings.RESEND_API_KEY
-            resend.Emails.send({
-                "from": f"{settings.EMAIL_FROM_NAME} <{settings.EMAIL_FROM}>",
-                "to": to_email,
-                "subject": subject,
-                "html": html_body
-            })
-            logger.info(f"Email sent via Resend API to {to_email}")
-            return
+            if settings.SMTP_PORT == 465:
+                with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT) as server:
+                    server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
+                    server.sendmail(settings.EMAIL_FROM, to_email, msg.as_string())
+            else:
+                with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT) as server:
+                    server.ehlo()
+                    server.starttls()
+                    server.ehlo()
+                    server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
+                    server.sendmail(settings.EMAIL_FROM, to_email, msg.as_string())
+
+            logger.info(f"Email sent via SMTP to {to_email}")
         except Exception as e:
-            logger.error(f"Resend API failed: {e}")
-            if settings.ENVIRONMENT != "development":
+            logger.error(f"SMTP failed to {to_email}: {e}")
+            if settings.ENVIRONMENT == "development":
+                logger.warning(f"[DEV FALLBACK] OTP for {to_email}: {code}")
+            else:
                 raise
-
-    # --- Choice 3: SMTP (Fallback or Local) ---
-    logger.warning("No Email API (SendGrid/Resend) configured. Falling back to SMTP.")
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = subject
-    msg["From"] = f"{settings.EMAIL_FROM_NAME} <{settings.EMAIL_FROM}>"
-    msg["To"] = to_email
-    msg.attach(MIMEText(html_body, "html"))
-
-    try:
-        if settings.SMTP_PORT == 465:
-            with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT) as server:
-                server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
-                server.sendmail(settings.EMAIL_FROM, to_email, msg.as_string())
-        else:
-            with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT) as server:
-                server.ehlo()
-                server.starttls()
-                server.ehlo()
-                server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
-                server.sendmail(settings.EMAIL_FROM, to_email, msg.as_string())
-
-        logger.info(f"Email sent via SMTP to {to_email}")
-    except Exception as e:
-        logger.error(f"SMTP failed to {to_email}: {e}")
-        if settings.ENVIRONMENT == "development":
-            logger.warning(f"[DEV FALLBACK] OTP for {to_email}: {code}")
-        else:
-            raise
