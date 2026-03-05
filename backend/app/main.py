@@ -16,9 +16,14 @@ app = FastAPI(
 )
 
 # CORS — allow frontend
+# Splitting by comma allowed for multiple frontend URLs (e.g., preview URLs)
+_origins = [o.strip().rstrip("/") for o in settings.FRONTEND_URL.split(",") if o.strip()]
+_origins.extend(["http://localhost:3000", "http://127.0.0.1:3000"])
+unique_origins = list(set(_origins))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_URL, "http://localhost:3000"],
+    allow_origins=unique_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
